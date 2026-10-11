@@ -1,0 +1,44 @@
+[
+ {"id":"s01","title":"A client PAID for this","sub":"Built with AI","scenes":[
+  {"id":"a","type":"phone","url":"/site/index.html","scroll":[0,1200],"say":"A safari company paid me for a website like this."},
+  {"id":"b","type":"terminal","lines":[["> ","Build a website for Kilima Safaris, a safari company in Arusha. Pages: Home, Tours, Gallery, Contact. Mobile first."]],"say":"I rebuilt it from an empty folder, using A.I."},
+  {"id":"c","type":"desktop","url":"/site/index.html","scroll":[0,1900],"say":"Tours, gallery, and a booking form. The full step by step is on my channel."}]},
+ {"id":"s02","title":"Bad prompt vs good prompt","sub":"Same AI. Different result.","scenes":[
+  {"id":"a","type":"terminal","lines":[["> ","make me a safari website"]],"note":"Generic result","say":"Make me a safari website. You get something generic."},
+  {"id":"b","type":"terminal","lines":[["> ","Build a website for Kilima Safaris in Arusha. React, Vite, Tailwind. Home, Tours with prices, Gallery, booking form. Mobile first. Deep green and sand. Plan first."]],"say":"Now the same A.I., with a real brief. Company, pages, colours, and plan first."},
+  {"id":"c","type":"phone","url":"/site/index.html","scroll":[0,1300],"say":"Same tool. The prompt is the skill."}]},
+ {"id":"s03","title":"The AI invented a mountain","sub":"Read every word","scenes":[
+  {"id":"a","type":"phone","url":"/site/index.html?broken","scroll":[560,700],"highlight":"Mount Everest Trek","say":"I asked A.I. to write a Tanzania safari site. It added a Mount Everest trek."},
+  {"id":"b","type":"title","big":"AI facts are drafts","small":"Until you check them","say":"Always read what A.I. writes, before your client does."}]},
+ {"id":"s04","title":"Localhost → live link","sub":"Free hosting in 30 s","scenes":[
+  {"id":"a","type":"desktop","url":"/site/index.html","addr":"localhost:5173","say":"This site only works on my laptop."},
+  {"id":"b","type":"terminal","tt":"Render — build log","lines":[["","==> Running build command 'npm install && npm run build'"],["","✓ built in 2.41s"],["","==> Your site is live 🎉"]],"say":"Push it to GitHub, create a free static site on Render."},
+  {"id":"c","type":"phone","url":"/site/index.html","scroll":[0,1200],"say":"And now anyone can open it. Full tutorial on my channel."}]},
+ {"id":"s05","title":"The refresh error","sub":"Save this fix","scenes":[
+  {"id":"a","type":"desktop","url":"/mock/notfound.html","addr":"kilima-safaris.onrender.com/tours","say":"Your React site works. Then you refresh. Not found."},
+  {"id":"b","type":"list","heading":"One rewrite rule","items":["Source: /*","Destination: /index.html","Action: Rewrite"],"say":"One rule fixes it. Rewrite slash star, to slash index dot html."},
+  {"id":"c","type":"desktop","url":"/site/index.html","addr":"kilima-safaris.onrender.com/tours","scroll":[600,1200],"say":"Refresh. Fixed. Save this."}]},
+ {"id":"s06","title":"Never push this file","sub":".env = your secret keys","scenes":[
+  {"id":"a","type":"title","big":"Never push <em>.env</em>","small":"Your keys become public","say":"If your dot env file is on GitHub, your keys are public."},
+  {"id":"b","type":"terminal","tt":".gitignore","lines":[["","node_modules"],["","dist"],["",".env"]],"say":"Add dot env to your git ignore, before your first commit. Every time."}]},
+ {"id":"s07","title":"M-Pesa from a website","sub":"Built with AI","scenes":[
+  {"id":"a","type":"phone","url":"/mock/pay.html?s=form","say":"The customer types their number on the website."},
+  {"id":"b","type":"phone","url":"/mock/pay.html?s=prompt","say":"And their phone asks for the M-Pesa PIN."},
+  {"id":"c","type":"phone","url":"/mock/pay.html?s=done","say":"Booking confirmed. I built this with A.I. Full build on my channel."}]},
+ {"id":"s08","title":"Why Stripe isn't enough","sub":"Learn what clients need","scenes":[
+  {"id":"a","type":"title","big":"Stripe <em>≠</em> East Africa","small":"Customers pay with M-Pesa","say":"Most coding tutorials teach Stripe. Most customers in East Africa pay with M-Pesa."},
+  {"id":"b","type":"flow","nodes":["Website","Your server","M-Pesa","Customer's phone"],"say":"Learn the payment your clients actually need."}]},
+ {"id":"s09","title":"Your payment never confirms?","sub":"Here's why","scenes":[
+  {"id":"a","type":"flow","nodes":["M-Pesa has the result","Calls localhost","Can't reach your laptop"],"say":"M-Pesa can't call your laptop."},
+  {"id":"b","type":"terminal","tt":"server — logs","lines":[["","Callback URL: https://kilima-api.onrender.com/callback"],["","POST /callback  ResultCode=0"]],"say":"Your callback needs a public link. That's why your test payment never confirms."}]},
+ {"id":"s10","title":"Scan. Order. Done.","sub":"QR ordering built with AI","scenes":[
+  {"id":"a","type":"desktop","url":"/mock/qr.html","addr":"localhost:5173/qr-sheet","say":"Scan the table."},
+  {"id":"b","type":"phone","url":"/mock/menu.html?table=4&s=cart","scroll":[0,400],"say":"Order from your phone."},
+  {"id":"c","type":"desktop","url":"/mock/db.html","addr":"console · orders","say":"The kitchen sees it. I built this with A.I. Part one is on my channel."}]},
+ {"id":"s11","title":"How does the kitchen know your table?","sub":"It's in the link","scenes":[
+  {"id":"a","type":"flow","nodes":["QR on table 4","/menu?table=4","Order: table 4"],"say":"How does the kitchen know your table?"},
+  {"id":"b","type":"phone","url":"/mock/menu.html?table=4","say":"The table number is in the Q R link. That's it."}]},
+ {"id":"s12","title":"What would YOU charge?","sub":"Comment your price","scenes":[
+  {"id":"a","type":"phone","url":"/mock/menu.html?table=4&s=cart","scroll":[0,400],"say":"A restaurant asks you for this Q R ordering system."},
+  {"id":"b","type":"desktop","url":"/mock/db.html","addr":"console · orders","say":"Menu, orders, and a live database. What would you charge? Comment your price. I'll share mine in part two."}]}
+]

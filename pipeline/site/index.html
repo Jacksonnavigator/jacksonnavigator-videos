@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kilima Safaris — Tanzania Safari Tours from Arusha</title>
+<style>
+  :root{--green:#1f3b2c;--green2:#2d5640;--sand:#e9d8b4;--sand2:#f6efe1;--sun:#e8a33d;--ink:#1b1b18;--white:#fff}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:"Segoe UI",system-ui,-apple-system,Roboto,sans-serif;color:var(--ink);background:var(--sand2)}
+  a{color:inherit;text-decoration:none}
+  nav{position:sticky;top:0;z-index:5;display:flex;align-items:center;justify-content:space-between;padding:16px 40px;background:rgba(31,59,44,.96);color:var(--white)}
+  .logo{font-weight:800;letter-spacing:.5px;font-size:20px;display:flex;gap:10px;align-items:center}
+  .logo svg{width:28px;height:28px}
+  .links{display:flex;gap:28px;font-size:15px}
+  .links a{opacity:.85}.links a.on{opacity:1;border-bottom:2px solid var(--sun);padding-bottom:3px}
+  .burger{display:none;width:28px;height:20px;flex-direction:column;justify-content:space-between}
+  .burger span{display:block;height:3px;border-radius:2px;background:var(--white)}
+  .hero{position:relative;height:620px;overflow:hidden;color:var(--white)}
+  .heroimg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 35%}.shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(15,25,18,.85) 0%,rgba(15,25,18,.55) 45%,rgba(15,25,18,.05) 100%)}
+  .hero .copy{position:relative;z-index:2;max-width:640px;padding:150px 40px 0}
+  .hero h1{font-size:56px;line-height:1.05;font-weight:800}
+  .hero p{font-size:19px;margin:18px 0 28px;opacity:.95;max-width:520px}
+  .btn{display:inline-block;background:var(--sun);color:var(--ink);font-weight:700;padding:14px 26px;border-radius:999px}
+  .btn.ghost{background:transparent;border:2px solid var(--white);color:var(--white);margin-left:10px}
+  section{padding:80px 40px;max-width:1180px;margin:0 auto}
+  h2{font-size:34px;color:var(--green);margin-bottom:8px}
+  .sub{color:#5c5a50;margin-bottom:36px}
+  .tours{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+  .card{background:var(--white);border-radius:16px;overflow:hidden;box-shadow:0 6px 22px rgba(31,59,44,.10)}
+  .cimg{display:block;width:100%;height:190px;object-fit:cover}
+  .card .b{padding:20px}
+  .card h3{font-size:20px;color:var(--green)}
+  .meta{display:flex;justify-content:space-between;margin:10px 0 16px;color:#5c5a50;font-size:15px}
+  .price{font-weight:800;color:var(--ink);font-size:18px}
+  .card .btn{padding:10px 20px;font-size:14px}
+  .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  .gallery img{width:100%;height:200px;border-radius:12px;display:block;object-fit:cover}
+  .book{background:var(--green);color:var(--white);border-radius:22px;padding:48px;display:grid;grid-template-columns:1fr 1.2fr;gap:40px}
+  .book h2{color:var(--white)}
+  .book p{opacity:.9;line-height:1.6}
+  form{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  label{font-size:13px;opacity:.9;display:block;margin-bottom:6px}
+  input,select{width:100%;padding:12px 14px;border-radius:10px;border:0;font-size:15px;background:var(--sand2)}
+  .full{grid-column:1/-1}
+  form .btn{border:0;font-size:16px;cursor:pointer}
+  footer{text-align:center;padding:40px;color:#5c5a50;font-size:14px}
+  /* phone fixes (version "fixed") */
+  @media (max-width:640px){
+    body:not(.broken) nav{padding:14px 18px}
+    body:not(.broken) .links{display:none}
+    body:not(.broken) .burger{display:flex}
+    body:not(.broken) .hero{height:560px}
+    body:not(.broken) .hero .copy{padding:110px 20px 0}
+    body:not(.broken) .hero h1{font-size:38px}
+    .shade{background:linear-gradient(180deg,rgba(15,25,18,.35) 0%,rgba(15,25,18,.6) 55%,rgba(15,25,18,.75) 100%)}
+    body:not(.broken) .btn.ghost{margin:12px 0 0}
+    body:not(.broken) section{padding:56px 18px}
+    body:not(.broken) .tours{grid-template-columns:1fr}
+    body:not(.broken) .gallery{grid-template-columns:1fr 1fr}
+    body:not(.broken) .book{grid-template-columns:1fr;padding:28px 20px}
+    body:not(.broken) form{grid-template-columns:1fr}
+  }
+  /* the AI's first draft: squashed on phones, menu covering the hero */
+  body.broken .links{position:absolute;top:56px;left:0;right:0;background:var(--green);flex-wrap:wrap;padding:12px 16px;gap:12px}
+  body.broken .tours{grid-template-columns:repeat(3,1fr)}
+  body.broken .card .b{padding:8px}
+  body.broken .hero h1{font-size:56px}
+</style>
+</head>
+<body>
+<nav>
+  <a class="logo" href="#"><svg viewBox="0 0 32 32"><path d="M2 26 L12 10 L18 19 L22 13 L30 26Z" fill="#e8a33d"/><circle cx="24" cy="7" r="3" fill="#e9d8b4"/></svg>Kilima Safaris</a>
+  <div class="links"><a class="on" href="#">Home</a><a href="#tours">Tours</a><a href="#gallery">Gallery</a><a href="#book">Contact</a></div>
+  <div class="burger"><span></span><span></span><span></span></div>
+</nav>
+
+<header class="hero">
+  <img class="heroimg" src="img/hero.jpg" alt="Sunset over the savanna from a safari lodge"><div class="shade"></div>
+  <div class="copy">
+    <h1>See Tanzania's wild heart.</h1>
+    <p>Small-group and private safaris from Arusha to the Serengeti, Ngorongoro and Tarangire, with local guides who grew up here.</p>
+    <a class="btn" href="#tours">View tours</a><a class="btn ghost" href="#book">Book a safari</a>
+  </div>
+</header>
+
+<section id="tours">
+  <h2>Featured tours</h2>
+  <p class="sub">Prices per person, sharing a 4x4 with a pop-up roof.</p>
+  <div class="tours">
+    <div class="card">
+      <img class="cimg" src="img/giraffe.jpg" alt="Giraffe in the Serengeti grass">
+      <div class="b"><h3 data-tour="0">Serengeti Migration Safari</h3><div class="meta"><span>4 days</span><span class="price">$1,450</span></div><a class="btn" href="#book">Book</a></div>
+    </div>
+    <div class="card">
+      <img class="cimg" src="img/ngorongoro.jpg" alt="View into a crater in the Ngorongoro highlands">
+      <div class="b"><h3 data-tour="1">Ngorongoro Crater Day Trip</h3><div class="meta"><span>1 day</span><span class="price">$380</span></div><a class="btn" href="#book">Book</a></div>
+    </div>
+    <div class="card">
+      <img class="cimg" src="img/elephant.jpg" alt="Elephant beside a baobab tree">
+      <div class="b"><h3 data-tour="2">Tarangire Elephant Trail</h3><div class="meta"><span>2 days</span><span class="price">$690</span></div><a class="btn" href="#book">Book</a></div>
+    </div>
+  </div>
+</section>
+
+<section id="gallery">
+  <h2>Gallery</h2>
+  <p class="sub">Moments from last season's trips.</p>
+  <div class="gallery">
+    <img src="img/zebras.jpg" alt="Zebras and wildebeest">
+    <img src="img/jeep.jpg" alt="Safari 4x4 with pop-up roof">
+    <img src="img/kilimanjaro.jpg" alt="Mount Kilimanjaro">
+    <img src="img/lions.jpg" alt="A pride of lions resting">
+  </div>
+</section>
+
+<section id="book">
+  <div class="book">
+    <div>
+      <h2>Book your safari</h2>
+      <p>Tell us your dates and group size. We reply within 24 hours with a full plan and price. A 20% deposit confirms your booking.</p>
+    </div>
+    <form onsubmit="event.preventDefault();this.querySelector('button').textContent='Request sent ✓'">
+      <div><label>Full name</label><input placeholder="Amina Hassan"></div>
+      <div><label>Email</label><input placeholder="amina@email.com"></div>
+      <div><label>Tour</label><select><option>Serengeti Migration Safari</option><option>Ngorongoro Crater Day Trip</option><option>Tarangire Elephant Trail</option></select></div>
+      <div><label>People</label><input placeholder="2"></div>
+      <div class="full"><label>Preferred dates</label><input placeholder="12–15 March 2027"></div>
+      <div class="full"><button class="btn" type="submit">Send booking request</button></div>
+    </form>
+  </div>
+</section>
+<footer>© 2026 Kilima Safaris · Arusha, Tanzania · Demo site built for a tutorial</footer>
+<script>
+  const q=new URLSearchParams(location.search);
+  if(q.has('broken')){document.body.classList.add('broken');document.querySelector('[data-tour="2"]').textContent='Mount Everest Trek';}
+</script>
+</body>
+</html>

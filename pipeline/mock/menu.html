@@ -1,0 +1,37 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mama Pendo's Kitchen — Menu</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Segoe UI",system-ui,Roboto,sans-serif;background:#fff8ef;color:#2a1d14;padding-bottom:90px}
+header{background:#b5462a;color:#fff;padding:18px 18px 14px}
+header h1{font-size:22px}header p{font-size:14px;opacity:.9;margin-top:2px}
+.tb{display:inline-block;background:#fff;color:#b5462a;font-weight:800;border-radius:999px;padding:3px 12px;font-size:13px;margin-top:8px}
+.cats{display:flex;gap:8px;padding:14px 16px 4px;overflow:hidden}
+.cats span{border:1.5px solid #b5462a;color:#b5462a;border-radius:999px;padding:6px 14px;font-size:14px;font-weight:600;white-space:nowrap}
+.cats span.on{background:#b5462a;color:#fff}
+h2{font-size:17px;padding:16px 16px 6px;color:#7a3a22}
+.item{display:flex;justify-content:space-between;align-items:center;background:#fff;margin:8px 16px;border-radius:14px;padding:14px;box-shadow:0 2px 10px rgba(122,58,34,.08)}
+.item b{display:block;font-size:16px}.item small{color:#8a7565;font-size:13px}
+.price{font-weight:800;font-size:15px;margin-top:4px;display:block}
+.q{display:flex;align-items:center;gap:10px}
+.q i{font-style:normal;width:30px;height:30px;border-radius:50%;background:#f3e2d3;display:flex;align-items:center;justify-content:center;font-weight:800;color:#b5462a}
+.q i.add{background:#b5462a;color:#fff}
+.cart{position:fixed;left:12px;right:12px;bottom:12px;background:#2a1d14;color:#fff;border-radius:16px;padding:15px 18px;display:flex;justify-content:space-between;font-weight:700}
+.cart em{font-style:normal;background:#e8a33d;color:#2a1d14;border-radius:10px;padding:2px 10px}
+.done{padding:60px 24px;text-align:center}
+.done .tick{width:90px;height:90px;border-radius:50%;background:#2f7d4a;color:#fff;font-size:52px;display:flex;align-items:center;justify-content:center;margin:0 auto 20px}
+.done h2{font-size:24px;color:#2a1d14;padding:0}.done p{color:#8a7565;margin-top:10px;font-size:16px}
+</style></head><body>
+<div id="app"></div>
+<script>
+const q=new URLSearchParams(location.search), t=q.get('table')||'4', st=q.get('s')||'menu';
+const menu={Mains:[['Chips Mayai','Chips and egg omelette',6000],['Pilau ya Nyama','Spiced rice with beef',9000],['Nyama Choma','Grilled goat, kachumbari',15000],['Chapati (2)','Soft layered flatbread',2000]],Drinks:[['Fresh Passion Juice','Made today',3000],['Chai ya Tangawizi','Ginger tea',1500]]};
+const cart={'Chips Mayai':2,'Fresh Passion Juice':1};
+const fmt=n=>'TZS '+n.toLocaleString('en-US');
+if(st==='done'){document.getElementById('app').innerHTML=`<header><h1>Mama Pendo's Kitchen</h1><span class="tb">Table ${t}</span></header><div class="done"><div class="tick">✓</div><h2>Order sent to the kitchen</h2><p>Order #0412 · Table ${t}<br>2× Chips Mayai, 1× Fresh Passion Juice<br><b>${fmt(15000)}</b></p><p>We'll bring it to your table.</p></div>`}
+else{
+let h=`<header><h1>Mama Pendo's Kitchen</h1><p>Scan, order, relax. We bring it to you.</p><span class="tb">Table ${t}</span></header><div class="cats"><span class="on">All</span><span>Mains</span><span>Drinks</span><span>Snacks</span></div>`;
+for(const [c,items] of Object.entries(menu)){h+=`<h2>${c}</h2>`;for(const [n,d,p] of items){const k=st==='cart'?(cart[n]||0):0;h+=`<div class="item"><div><b>${n}</b><small>${d}</small><span class="price">${fmt(p)}</span></div><div class="q">${k?`<i>−</i><span>${k}</span>`:''}<i class="add">+</i></div></div>`}}
+if(st==='cart')h+=`<div class="cart"><span><em>3</em> items</span><span>Place order · ${fmt(15000)}</span></div>`;
+document.getElementById('app').innerHTML=h}
+</script></body></html>

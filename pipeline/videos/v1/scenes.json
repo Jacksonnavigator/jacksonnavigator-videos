@@ -1,0 +1,303 @@
+[
+ {
+  "id": "hook1",
+  "type": "phone",
+  "url": "/site/index.html",
+  "scroll": [
+   0,
+   1500
+  ],
+  "say": "A safari company paid me to build a website like this. Today, I'm rebuilding it from an empty folder, using A.I."
+ },
+ {
+  "id": "hook2",
+  "type": "desktop",
+  "url": "/site/index.html",
+  "scroll": [
+   0,
+   1900
+  ],
+  "say": "By the end, you'll have a real, mobile ready business website. Tours with prices, a photo gallery, and a booking form. And you'll know exactly how to ask the A.I. for it."
+ },
+ {
+  "id": "hook3",
+  "type": "title",
+  "big": "Toy apps don't pay.",
+  "small": "Client websites do.",
+  "say": "Most A.I. tutorials build a to-do app that nobody would pay for. Clients pay for sites like this one. If you can build it, you can start charging for your skills."
+ },
+ {
+  "id": "brief",
+  "type": "brief",
+  "say": "Here's the client brief. A safari company in Arusha wants a home page with a big hero photo, a tours page with prices, a gallery, and a form that sends booking requests. It has to look good on phones, because most of their customers browse on one."
+ },
+ {
+  "id": "tool",
+  "type": "title",
+  "big": "Claude Code",
+  "small": "An A.I. that works inside your project folder",
+  "say": "The tool is Claude Code. It's an A.I. that works inside your project folder. It reads your files, writes code, and runs commands, while you stay in charge."
+ },
+ {
+  "id": "steps",
+  "type": "list",
+  "heading": "5 steps",
+  "items": [
+   "Set up",
+   "Write the first prompt",
+   "Build the pages",
+   "Fix what the AI gets wrong",
+   "Client-ready check"
+  ],
+  "say": "We'll do this in five steps. Set up. Write the first prompt. Build the pages. Fix what the A.I. gets wrong. Then a client ready check."
+ },
+ {
+  "id": "setup1",
+  "type": "list",
+  "heading": "You need 3 things",
+  "items": [
+   "Node.js",
+   "A code editor (VS Code)",
+   "Claude Code + a paid Claude plan"
+  ],
+  "say": "You need three things. Node J S installed. A code editor, like V S Code. And Claude Code, which needs a paid Claude plan. The install command changes sometimes, so the official install page is linked in the description. Copy it from there, not from a random blog."
+ },
+ {
+  "id": "setup2",
+  "type": "terminal",
+  "lines": [
+   [
+    "$ ",
+    "mkdir kilima-safaris && cd kilima-safaris"
+   ],
+   [
+    "$ ",
+    "claude"
+   ],
+   [
+    "",
+    ""
+   ],
+   [
+    "> ",
+    "/init"
+   ],
+   [
+    "",
+    "Created CLAUDE.md \u2014 project instructions"
+   ]
+  ],
+  "say": "Make an empty folder called kilima safaris. Open it in your terminal and type claude. It's now looking at your empty project. The first command I always run is slash init. It creates a file called CLAUDE dot M D, the project's instruction sheet. Every time Claude works here, it reads it first."
+ },
+ {
+  "id": "cta",
+  "type": "title",
+  "big": "New real build every Thursday",
+  "small": "Subscribe so you don't miss the next one",
+  "say": "Quick one. Every week I rebuild a real project that a client paid for, step by step. If that's useful, subscribe, so you don't miss the next one."
+ },
+ {
+  "id": "prompt1",
+  "type": "terminal",
+  "lines": [
+   [
+    "> ",
+    "make me a safari website"
+   ]
+  ],
+  "note": "Generic result",
+  "say": "Now, the mistake almost every beginner makes. They type, make me a safari website, and hit enter. You get something generic that looks like every template online."
+ },
+ {
+  "id": "prompt2",
+  "type": "terminal",
+  "lines": [
+   [
+    "> ",
+    "Build a website for Kilima Safaris, a safari company in Arusha. Use React with Vite and Tailwind. Pages: Home, Tours, Gallery, Contact. Home has a full-width hero image and three featured tours. Each tour shows name, days, price in US dollars and a Book button. The contact page has a booking form: name, email, tour, dates, number of people. Mobile first. Earthy colours: deep green, sand and white. Plan first and show me the plan before writing code."
+   ]
+  ],
+  "say": "Instead, I give it the brief, like I'm talking to a junior developer. The company name and city. The stack: React, Vite and Tailwind. The four pages. What each tour card shows. The booking form fields. Mobile first. The colours. And one last line: plan first, and show me the plan before writing code."
+ },
+ {
+  "id": "plan",
+  "type": "terminal",
+  "lines": [
+   [
+    "",
+    "Plan:"
+   ],
+   [
+    "",
+    "1. Scaffold Vite + React + Tailwind"
+   ],
+   [
+    "",
+    "2. Pages: Home, Tours, Gallery, Contact"
+   ],
+   [
+    "",
+    "3. Gallery: use react-slick carousel"
+   ],
+   [
+    "",
+    "4. Booking form with validation"
+   ],
+   [
+    "> ",
+    "Use a simple CSS grid for the gallery, no carousel library."
+   ],
+   [
+    "",
+    "Updated plan. Proceeding."
+   ]
+  ],
+  "say": "That last line matters. You read the plan and fix the plan, not the code. Changing the plan costs one sentence. Changing finished code costs an hour. Here, it wants a heavy carousel library for the gallery. I don't want that, so I tell it, use a simple C S S grid instead. Plan approved."
+ },
+ {
+  "id": "build",
+  "type": "terminal",
+  "lines": [
+   [
+    "",
+    "Creating src/pages/Home.jsx"
+   ],
+   [
+    "",
+    "Creating src/pages/Tours.jsx"
+   ],
+   [
+    "",
+    "Creating src/pages/Gallery.jsx"
+   ],
+   [
+    "",
+    "Creating src/pages/Contact.jsx"
+   ],
+   [
+    "",
+    "Run npm install? (y/n)"
+   ],
+   [
+    "> ",
+    "y"
+   ],
+   [
+    "",
+    "Done. Run npm run dev to preview."
+   ]
+  ],
+  "say": "Now it builds. It creates the project, installs packages, and writes the pages. It asks permission before running commands. Read those prompts. Don't just smash yes."
+ },
+ {
+  "id": "preview",
+  "type": "desktop",
+  "url": "/site/index.html",
+  "scroll": [
+   0,
+   2200
+  ],
+  "say": "Run the dev server, open the browser, and here's Kilima Safaris. Not bad for a few minutes of work. But don't send this to a client yet."
+ },
+ {
+  "id": "rehook",
+  "type": "title",
+  "big": "3 problems",
+  "small": "A client would spot them in ten seconds",
+  "say": "There are three problems here that a client would spot in ten seconds. Most A.I. tutorials skip this part. It's the part that gets you paid."
+ },
+ {
+  "id": "fix1a",
+  "type": "phone",
+  "url": "/site/index.html?broken",
+  "scroll": [
+   0,
+   900
+  ],
+  "say": "Problem one. Phones. On a phone screen, the menu covers the headline, and the tour cards are squashed into three tiny columns."
+ },
+ {
+  "id": "fix1b",
+  "type": "terminal",
+  "lines": [
+   [
+    "> ",
+    "On screens under 640px, stack the tour cards in one column and turn the menu into a hamburger button."
+   ]
+  ],
+  "say": "I don't fix it by hand. I describe exactly what's wrong. On screens under six hundred and forty pixels, stack the tour cards in one column, and turn the menu into a hamburger button. Specific problem, specific fix."
+ },
+ {
+  "id": "fix1c",
+  "type": "split",
+  "left": "/site/index.html?broken",
+  "right": "/site/index.html",
+  "scroll": [
+   0,
+   900
+  ],
+  "say": "Here's before, and after."
+ },
+ {
+  "id": "fix2",
+  "type": "terminal",
+  "lines": [
+   [
+    "> ",
+    "Compress all images, convert them to WebP, and lazy-load the gallery."
+   ],
+   [
+    "",
+    "hero.jpg 2.4 MB \u2192 hero.webp 180 KB"
+   ]
+  ],
+  "say": "Problem two. Images. The hero photo is huge, and on a slow mobile connection it takes forever. I ask it to compress the images, use web P, and lazy load the gallery. The page loads much faster."
+ },
+ {
+  "id": "fix3",
+  "type": "phone",
+  "url": "/site/index.html?broken",
+  "scroll": [
+   560,
+   700
+  ],
+  "highlight": "Mount Everest Trek",
+  "say": "Problem three. Fake content. The A.I. invented a Mount Everest trek, in Tanzania. Always read every word it writes. I replace it with real tours. Serengeti, Ngorongoro, and Tarangire."
+ },
+ {
+  "id": "facts",
+  "type": "title",
+  "big": "AI facts are drafts",
+  "small": "Until you check them",
+  "say": "Every fact the A.I. writes is a draft until you check it."
+ },
+ {
+  "id": "check",
+  "type": "list",
+  "heading": "Client-ready check",
+  "items": [
+   "Works on a real phone",
+   "Booking form actually sends",
+   "Names, prices and spelling correct",
+   "Fast on mobile data"
+  ],
+  "say": "Before any client sees it, I check four things. Does it work on a real phone, not just dev tools? Does the booking form actually send? Are the names, prices and spellings right? And does it load fast on mobile data? Four yeses, and you have something worth paying for."
+ },
+ {
+  "id": "outro1",
+  "type": "phone",
+  "url": "/site/index.html",
+  "scroll": [
+   1700,
+   2600
+  ],
+  "say": "Right now, the site only lives on my laptop. If you followed along, comment, built it, and tell me what you made. I reply to every comment."
+ },
+ {
+  "id": "outro2",
+  "type": "end",
+  "big": "Next: put it online, free",
+  "small": "Plus the deploy error almost everyone hits",
+  "say": "Next, we put Kilima Safaris online with a real link, for free. And there's one deploy error almost everyone hits the first time. I'll show you how to fix it in thirty seconds. That video is right here."
+ }
+]

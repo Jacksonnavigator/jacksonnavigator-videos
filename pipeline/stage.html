@@ -1,0 +1,120 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{width:1280px;height:720px;overflow:hidden;background:#0f1412;font-family:"Segoe UI",system-ui,Roboto,sans-serif;color:#f4efe4}
+  #bg{position:absolute;inset:0;background:radial-gradient(1200px 600px at 20% 0%,#1f3b2c 0%,#0f1412 60%)}
+  #wm{position:absolute;top:22px;right:28px;font-size:15px;opacity:.55;letter-spacing:.3px;z-index:9}
+  #root{position:absolute;inset:0}
+  #cap{position:absolute;left:50%;bottom:34px;transform:translateX(-50%);max-width:1040px;text-align:center;font-size:30px;font-weight:700;line-height:1.25;
+       background:rgba(0,0,0,.72);padding:10px 20px;border-radius:10px;z-index:10}
+  #cap:empty{display:none}
+  .frame{position:absolute;overflow:hidden;background:#fff}
+  .frame iframe{border:0;transform-origin:0 0;position:absolute;left:0;top:0;background:#fff}
+  .phone{border-radius:38px;border:10px solid #111;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+  .browser{border-radius:12px;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+  .bar{position:absolute;left:0;right:0;top:0;height:34px;background:#e7e2d8;display:flex;align-items:center;gap:8px;padding-left:14px;z-index:2}
+  .bar i{width:11px;height:11px;border-radius:50%;background:#d26;display:block}
+  .bar i:nth-child(2){background:#eb3}.bar i:nth-child(3){background:#4b6}
+  .bar span{margin-left:16px;background:#fff;color:#555;font-size:12px;padding:4px 14px;border-radius:6px;width:420px}
+  .label{position:absolute;font-size:26px;font-weight:800;letter-spacing:1px}
+  .title{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:0 80px}
+  .title .big{font-size:76px;font-weight:900;line-height:1.05}
+  .title .small{font-size:32px;opacity:.85;margin-top:22px}
+  .title .big em{font-style:normal;color:#e8a33d}
+  .list{position:absolute;left:150px;top:110px;right:150px}
+  .list h2{font-size:52px;color:#e8a33d;margin-bottom:34px}
+  .list li{list-style:none;font-size:36px;margin:0 0 20px;display:flex;gap:18px;align-items:center;transition:none}
+  .list li b{display:inline-flex;width:48px;height:48px;border-radius:50%;background:#2d5640;align-items:center;justify-content:center;font-size:24px}
+  .term{position:absolute;left:90px;top:70px;width:1100px;height:500px;background:#111614;border-radius:14px;border:1px solid #2b3a33;box-shadow:0 30px 80px rgba(0,0,0,.6);overflow:hidden}
+  .term .tb{height:38px;background:#1b2420;display:flex;align-items:center;padding-left:16px;gap:8px;font-size:14px;color:#9aa}
+  .term .tb i{width:12px;height:12px;border-radius:50%;background:#444;display:block}
+  .term pre{padding:22px 28px;font:24px/1.5 "DejaVu Sans Mono",Consolas,monospace;white-space:pre-wrap;word-break:break-word;color:#e6e6dc}
+  .term .p{color:#e8a33d}.term .o{color:#8fd19e}
+  .cursor{display:inline-block;width:12px;height:26px;background:#e6e6dc;vertical-align:-4px}
+  .note{position:absolute;right:120px;bottom:150px;background:#c8553d;color:#fff;font-size:30px;font-weight:800;padding:10px 22px;border-radius:10px;transform:rotate(-3deg)}
+  .brief{position:absolute;left:250px;top:70px;width:780px;background:#f6efe1;color:#1b1b18;border-radius:16px;padding:38px 46px;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+  .brief h3{font-size:18px;letter-spacing:2px;color:#2d5640}
+  .brief h2{font-size:42px;margin:6px 0 20px;color:#1f3b2c}
+  .brief li{font-size:26px;margin:0 0 12px 28px}
+  .end{position:absolute;inset:0}
+  .end .vid{position:absolute;right:110px;top:150px;width:520px;height:292px;border-radius:14px;border:3px dashed #e8a33d;display:flex;align-items:center;justify-content:center;font-size:24px;opacity:.9}
+  .end .t{position:absolute;left:110px;top:170px;width:520px}
+  .end .t .big{font-size:56px;font-weight:900;line-height:1.08}
+  .end .t .small{font-size:26px;opacity:.85;margin-top:18px}
+  .end .sub{position:absolute;left:110px;top:430px;background:#c8553d;color:#fff;font-weight:800;font-size:26px;padding:14px 30px;border-radius:999px}
+.flow{position:absolute;left:40px;right:40px;top:210px;display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:nowrap}
+  .fn{background:#f6efe1;color:#1f3b2c;font-weight:800;font-size:24px;padding:22px 18px;border-radius:14px;text-align:center;width:170px;line-height:1.2}
+  .fa{font-size:40px;color:#e8a33d;font-weight:900}
+</style></head>
+<body><div id="bg"></div><div id="wm">@jacksonnavigator</div><div id="root"></div><div id="cap"></div>
+<script>
+let S=null, frames=[], sentences=[];
+const ease=x=>x<.5?2*x*x:1-Math.pow(-2*x+2,2)/2;
+const clamp=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));
+function iframe(url,w,h,scale){const f=document.createElement('iframe');f.src=url;f.width=w;f.height=h;f.style.width=w+'px';f.style.height=h+'px';f.style.transform=`scale(${scale})`;return f}
+function loaded(f){return new Promise(r=>{f.onload=()=>setTimeout(r,250)})}
+function splitSentences(t){return t.match(/[^.?!]+[.?!]+(\s|$)|[^.?!]+$/g).map(s=>s.trim()).filter(Boolean)}
+window.setScene=async function(s){
+  S=s; frames=[]; const root=document.getElementById('root'); root.innerHTML='';
+  // caption timing by character share
+  const fixes=[[/A\.I\./g,'AI'],[/Node J S/g,'Node.js'],[/V S Code/g,'VS Code'],[/slash init/g,'/init'],[/CLAUDE dot M D/g,'CLAUDE.md'],[/C S S/g,'CSS'],[/web P/g,'WebP'],[/lazy load/g,'lazy-load'],[/kilima safaris/g,'kilima-safaris'],[/six hundred and forty pixels/g,'640px'],[/mobile ready/g,'mobile-ready'],[/client ready/g,'client-ready'],[/comment, built it,/g,'comment "built it"'],[/render dot com/g,'render.com'],[/index dot html/g,'index.html'],[/git ignore file/g,'.gitignore file'],[/git ignore/g,'.gitignore'],[/the dot env file/g,'the .env file'],[/a dot env file/g,'a .env file'],[/dot env/g,'.env'],[/node modules/g,'node_modules'],[/slash star/g,'/*'],[/slash index/g,'/index'],[/auto deploy/g,'auto-deploy'],[/S T K push/g,'STK push'],[/S T K/g,'STK'],[/Fire base/g,'Firebase'],[/Fire store/g,'Firestore'],[/Q R/g,'QR'],[/slash pay/g,'/pay'],[/slash callback/g,'/callback'],[/T Z S/g,'TZS'],[/Ex press/g,'Express']];
+  let cap=s.say; fixes.forEach(([a,b])=>cap=cap.replace(a,b));
+  const ss=splitSentences(cap.replace(/(\S)\.(\S)/g,'$1#$2')).map(x=>x.replace(/#/g,'.')); const tot=ss.reduce((a,x)=>a+x.length,0); let acc=0;
+  sentences=ss.map(x=>{const st=acc/tot; acc+=x.length; return {t:x,a:st,b:acc/tot}});
+  const waits=[];
+  if(s.type==='phone'||s.type==='split'){
+    const urls=s.type==='phone'?[s.url]:[s.left,s.right];
+    urls.forEach((u,i)=>{
+      const fr=document.createElement('div');fr.className='frame phone';
+      const sc=0.66, W=390, H=760;
+      fr.style.width=(W*sc+20)+'px';fr.style.height=(H*sc+20)+'px';
+      const x=urls.length===1?640-(W*sc+20)/2:(i===0?300:700);
+      fr.style.left=x+'px';fr.style.top='44px';
+      const f=iframe(u,W,H,sc);fr.appendChild(f);root.appendChild(fr);frames.push(f);waits.push(loaded(f));
+      if(urls.length>1){const l=document.createElement('div');l.className='label';l.textContent=i?'AFTER':'BEFORE';l.style.left=(x+90)+'px';l.style.top='20px';l.style.color=i?'#8fd19e':'#e57';root.appendChild(l)}
+    });
+  } else if(s.type==='desktop'){
+    const fr=document.createElement('div');fr.className='frame browser';
+    const sc=0.82;fr.style.width=(1280*sc)+'px';fr.style.height=(34+640*sc)+'px';fr.style.left=(640-1280*sc/2)+'px';fr.style.top='40px';
+    fr.innerHTML=`<div class="bar"><i></i><i></i><i></i><span>${s.addr||"localhost:5173"}</span></div>`;
+    const f=iframe(s.url,1280,640,sc);f.style.top='34px';fr.appendChild(f);root.appendChild(fr);frames.push(f);waits.push(loaded(f));
+  } else if(s.type==='title'){
+    root.innerHTML=`<div class="title"><div class="big">${s.big}</div><div class="small">${s.small||''}</div></div>`;
+  } else if(s.type==='list'){
+    root.innerHTML=`<div class="list"><h2>${s.heading}</h2><ul>${s.items.map((x,i)=>`<li><b>${i+1}</b>${x}</li>`).join('')}</ul></div>`;
+  } else if(s.type==='brief'){
+    root.innerHTML=`<div class="brief"><h3>CLIENT BRIEF</h3><h2>Kilima Safaris, Arusha</h2><ul>
+      <li>Home page with a big hero photo</li><li>Tours page with prices</li><li>Photo gallery</li><li>Booking request form</li><li>Must look great on phones</li></ul></div>`;
+  } else if(s.type==='terminal'){
+    root.innerHTML=`<div class="term"><div class="tb"><i></i><i></i><i></i><span style="margin-left:10px">${s.tt||"kilima-safaris — claude"}</span></div><pre id="tp"></pre></div>`+(s.note?`<div class="note" id="nt" style="opacity:0">${s.note}</div>`:'');
+  } else if(s.type==='flow'){
+    root.innerHTML=`<div class="flow">${s.nodes.map((n,i)=>`<div class="fn" id="fn${i}">${n}</div>`+(i<s.nodes.length-1?`<div class="fa" id="fa${i}">→</div>`:'')).join('')}</div>`;
+  } else if(s.type==='end'){
+    root.innerHTML=`<div class="end"><div class="t"><div class="big">${s.big}</div><div class="small">${s.small}</div></div><div class="sub">SUBSCRIBE</div><div class="vid">Next video</div></div>`;
+  }
+  await Promise.all(waits);
+  if(s.highlight){frames.forEach(f=>{const d=f.contentDocument;d.querySelectorAll('h3').forEach(h=>{if(h.textContent.includes(s.highlight)){h.style.outline='4px solid #e33';h.style.outlineOffset='6px'}})})}
+  return true;
+};
+window.setT=function(t,dur){
+  const p=clamp(t/dur);
+  // captions
+  const c=sentences.find(x=>p>=x.a&&p<x.b)||sentences[sentences.length-1];
+  document.getElementById('cap').textContent=(c&&!S.nocap)?c.t:'';
+  const s=S;
+  if(s.scroll){const y=s.scroll[0]+(s.scroll[1]-s.scroll[0])*ease(clamp((p-0.08)/0.84));frames.forEach(f=>f.contentWindow.scrollTo(0,y))}
+  if(s.type==='flow'){s.nodes.forEach((n,i)=>{const at=0.08+i*0.8/s.nodes.length;const on=p>=at;document.getElementById('fn'+i).style.opacity=on?1:.15;const a=document.getElementById('fa'+i);if(a)a.style.opacity=p>=at+0.4/s.nodes.length?1:.15})}
+  if(s.type==='list'){document.querySelectorAll('.list li').forEach((li,i)=>{const at=0.12+i*0.8/s.items.length;li.style.opacity=p>=at?1:0.12})}
+  if(s.type==='title'){document.querySelector('.title').style.transform=`scale(${1+0.04*p})`}
+  if(s.type==='terminal'){
+    const L=s.lines; const total=L.reduce((a,l)=>a+l[1].length+1,0); const typed=Math.floor(total*clamp(p/0.7));
+    let n=typed, html='';
+    for(const [pre,txt] of L){ if(n<=0)break; const k=Math.min(txt.length,n); n-=k+1;
+      const cls=pre?'':'o'; html+=`<span class="p">${pre}</span><span class="${cls}">${txt.slice(0,k).replace(/</g,'&lt;')}</span>`+(n>0?'\n':''); }
+    html+=(Math.floor(t*2)%2===0||p<0.7)?'<span class="cursor"></span>':'';
+    document.getElementById('tp').innerHTML=html;
+    const nt=document.getElementById('nt'); if(nt) nt.style.opacity=p>0.55?1:0;
+  }
+};
+</script></body></html>

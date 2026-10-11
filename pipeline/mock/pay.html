@@ -1,0 +1,35 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Segoe UI",system-ui,Roboto,sans-serif;background:#f6efe1;color:#1b1b18;min-height:100vh}
+nav{background:#1f3b2c;color:#fff;font-weight:800;padding:16px 20px;font-size:18px}
+.wrap{padding:22px 20px}
+h2{color:#1f3b2c;font-size:26px;margin-bottom:6px}
+p{color:#5c5a50;font-size:15px;margin-bottom:18px}
+label{font-size:13px;color:#5c5a50;display:block;margin:12px 0 6px}
+.in{background:#fff;border-radius:10px;padding:13px 14px;font-size:16px}
+.sum{background:#fff;border-radius:12px;padding:14px;margin-top:16px;display:flex;justify-content:space-between;font-weight:700}
+.btn{margin-top:18px;background:#e8a33d;border-radius:999px;padding:15px;text-align:center;font-weight:800;font-size:17px}
+.wait{margin-top:18px;background:#1f3b2c;color:#fff;border-radius:12px;padding:16px;text-align:center;font-weight:700}
+.ok{margin-top:18px;background:#2f7d4a;color:#fff;border-radius:12px;padding:18px;text-align:center;font-weight:800;font-size:18px}
+.ov{position:fixed;inset:0;background:rgba(0,0,0,.55);display:flex;align-items:center;justify-content:center}
+.dlg{background:#fff;width:300px;border-radius:14px;padding:22px;font-size:16px;line-height:1.45}
+.dlg b{display:block;font-size:18px;margin-bottom:8px}
+.pin{margin:14px 0;border-bottom:2px solid #2f7d4a;padding:8px 0;letter-spacing:8px;font-size:22px}
+.row{display:flex;justify-content:flex-end;gap:24px;color:#2f7d4a;font-weight:800}
+</style></head><body>
+<nav>Kilima Safaris</nav>
+<div class="wrap">
+<h2>Pay your deposit</h2>
+<p>Serengeti Migration Safari · 2 people · 12–15 March</p>
+<label>M-Pesa phone number</label><div class="in">0712 345 678</div>
+<div class="sum"><span>Deposit (20%)</span><span>KES 1,000 (test)</span></div>
+<div id="act" class="btn">Pay with M-Pesa</div>
+</div>
+<div id="ov" class="ov" style="display:none"><div class="dlg"><b>Payment request</b>Pay KES 1,000 to KILIMA SAFARIS for booking KS-2041?<div class="pin">••••</div><div class="row"><span>CANCEL</span><span>SEND</span></div></div></div>
+<script>
+const s=new URLSearchParams(location.search).get('s')||'form';
+if(s==='wait'||s==='prompt'){document.getElementById('act').outerHTML='<div class="wait">Check your phone and enter your M-Pesa PIN…</div>'}
+if(s==='prompt'){document.getElementById('ov').style.display='flex'}
+if(s==='done'){document.getElementById('act').outerHTML='<div class="ok">✓ Deposit received. Booking KS-2041 confirmed.</div>'}
+</script></body></html>
